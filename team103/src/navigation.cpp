@@ -18,6 +18,7 @@ void xxnav() {
         ROS_INFO("[STATE_GOTO] Get_wp_name = %s (%.2f,%.2f)", strGoto.c_str(),x,y);
 
         MoveBaseClient ac("move_base", true);
+        // Exception Handler
         if(!ac.waitForServer(ros::Duration(5.0)))
         {
             ROS_INFO("The move_base action server is no running. action abort...");
@@ -43,6 +44,7 @@ void xxnav() {
                 }
                 nDelay = 0;
             }
+            // Exception Handler
             else
             {
                 ROS_INFO("Failed to get to %s ...",strGoto.c_str() );
@@ -57,6 +59,7 @@ void xxnav() {
         }
         
     }
+    // Exception Handler
     else
     {
         ROS_ERROR("Failed to call service GetWaypointByName");
