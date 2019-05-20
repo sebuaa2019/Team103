@@ -14,6 +14,13 @@
 
 int main(int argc, char** argv)
 {
+
+    strToSpeak = "";
+    strKeyWord = "";
+
+    nState = STATE_READY;
+    nDelay = 0;
+
     ros::init(argc, argv, "wpb_home_shopping");
 
     ros::NodeHandle n;
