@@ -3,7 +3,7 @@
 
 #include "gmain.h"
 #include "function.h"
-
+//author
 void xxnav();
 
 #endif

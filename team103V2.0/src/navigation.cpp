@@ -1,5 +1,5 @@
 #include "navigation.h"
-
+//author
 void xxnav() {
 /*
  * requires nState = STATE_COMEBACK or STATE_GOTO
@@ -55,7 +55,7 @@ void xxnav() {
                 nState = STATE_ASK;
             }
         }
-        
+
     }
     else
     {
