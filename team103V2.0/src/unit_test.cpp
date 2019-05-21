@@ -98,3 +98,75 @@ void PassResultCallback_test() {
     assert(bPassDone == true);
     cout << "PassResultCallback_test done." << endl;
 }
+
+//@author SunQi
+void FindKeyword_test(){
+    cout << "FindKeyword_test start..." << endl;
+    std::string args0 = "Bring me a bottle of water";
+    std::string args1 = "";
+    assert(FindKeyword(args0) == "water");
+    assert(FindKeyword(args1) == "");
+    cout << "FindKeyword_test done." << endl;
+}
+
+
+void Keyword_test_CB(){
+    cout << "Keywrod_test_CB start..." << endl;
+    ros::NodeHandle n;
+    ros::Publisher keyword_pub = n.advertise<std_msgs::String>("/xfyun/iat", 10);
+
+
+
+    // STATE_FOLLOW
+    nState = STATE_FOLLOW;
+    std_msgs::String msg;
+
+
+    // std_msgs::String::ConstPtr msgp = &msg;
+    
+    // ros::NodeHandle n;
+    // ros::Subscriber sub_sr = n.subscribe("/xfyun/");
+
+    msg.data = "Bring me a bottle of water.";
+    keyword_pub.publish(msg);
+    // KeywordCB(msg);
+
+    msg.data = "Stop following.";
+    keyword_pub.publish(msg);
+    // KeywordCB(msgp);
+    assert(nDelay == 0);
+    assert(nState == STATE_ASK);
+
+    nState = STATE_ASK;
+    msg.data = "Bring me a bottle of water.";
+    keyword_pub.publish(msg);
+    // KeywordCB(&msgp);
+    assert(nState == STATE_GOTO);
+    cout << "Keywrod_test_CB done." << endl;
+}
+
+
+
+void xxnav_test(){
+    cout << "xxnav_test start..." << endl;
+	srvName.response.pose.position.x = 10.1;
+	srvName.response.pose.position.y = 10.1;
+
+
+	// test case 1
+	nState = STATE_COMEBACK;
+	xxnav();
+	assert(srvName.request.name == "master");
+	assert(nState == STATE_PASS);
+	assert(nDelay == 0);
+	
+	// test case 2
+	nState = STATE_GOTO;
+	xxnav();
+	assert(srvName.request.name == strGoto);
+	assert(nState == STATE_GRAB);
+	assert(nDelay == 0);
+	
+	// test case 3
+    cout << "xxnav_test done." << endl;
+}
