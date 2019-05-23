@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<script type="text/javascript" src="scripts/easeljs-0.7.1.min.js"></script>
+<script type="text/javascript" src="scripts/eventemitter2.min.js"></script>
+<script type="text/javascript" src="roslibjs/build/roslib.min.js"></script>
+<script type="text/javascript" src="scripts/ros2djs/build/ros2d.min.js"></script>
+<script type="text/javascript" src="scripts/reconnecting-websocket.js"></script>
+
+</head>
+
+<body>
+  <h1>Simple Map Example</h1>
+<div>
+        <input type="text" id="txt"/>
+        <input type="button" id="btn" value="提交" onclick="sendMsg();"/>
+        <input type="button" id="close" value="关闭连接" onclick="closeConn();"/>
+        <input type="button" id="clear" value="cleanScreen" onclick="cleanScreen();"/>
+    </div>
+    <div id="content"></div>
+<script type="text/javascript">
+    var socket = new WebSocket("ws://127.0.0.1:8000");
+ 
+    socket.onopen = function () {
+        /* 与服务器端连接成功后，自动执行 */
+ 
+        var newTag = document.createElement('div');
+        newTag.innerHTML = "【连接成功】";
+        document.getElementById('content').appendChild(newTag);
+    };
+ 
+    socket.onmessage = function (event) {
+        /* 服务器端向客户端发送数据时，自动执行 */
+        var response = event.data;
+        var newTag = document.createElement('div');
+			newTag.innerHTML = response;
+        document.getElementById('content').appendChild(newTag);
+    };
+ 
+    socket.onclose = function (event) {
+        /* 服务器端主动断开连接时，自动执行 */
+        var newTag = document.createElement('div');
+        newTag.innerHTML = "【关闭连接】";
+        document.getElementById('content').appendChild(newTag);
+    };
+ 
+    function sendMsg() {
+        var txt = document.getElementById('txt');
+        socket.send(txt.value);
+        txt.value = "";
+    }
+    function closeConn() {
+        socket.close();
+        var newTag = document.createElement('div');
+        newTag.innerHTML = "【关闭连接】";
+        document.getElementById('content').appendChild(newTag);
+    }
+	function cleanScreen() {
+		var f = document.getElementById("content"); 
+		var childs = f.childNodes; 
+		for(var i = childs.length - 1; i >= 0; i--) { 
+			//alert(childs[i].nodeName); 
+  			f.removeChild(childs[i]); 
+		}
+	}
+ 
+</script>
+
+</body>
+</html>
+
