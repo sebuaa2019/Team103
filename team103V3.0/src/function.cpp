@@ -63,10 +63,10 @@ void Speak(std::string inStr)
 // 添加航点关键词
 void InitKeyword()
 {
-    arKeyword.push_back("start");   //机器人开始启动的地点,最后要回去
-    arKeyword.push_back("water");
-    arKeyword.push_back("tea");
-    arKeyword.push_back("cola");
+    arKeyword.push_back("开始");   //机器人开始启动的地点,最后要回去
+    arKeyword.push_back("水");
+    arKeyword.push_back("奶茶");
+    arKeyword.push_back("咖啡");
 }
 
 

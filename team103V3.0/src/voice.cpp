@@ -38,7 +38,7 @@ void KeywordCB(const std_msgs::String::ConstPtr & msg)
         }
 
         // 停止跟随的指令
-        int nFindIndex = msg->data.find("top follow");
+        int nFindIndex = msg->data.find("别跟了");
         if(nFindIndex >= 0)
         {
             FollowSwitch(false, 0);
