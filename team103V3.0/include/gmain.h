@@ -15,44 +15,48 @@
 #include <tf/transform_listener.h>
 #include <geometry_msgs/PoseStamped.h>
 
+
+#define STATE_READY     0
+#define STATE_FOLLOW    1
+#define STATE_ASK       2
+#define STATE_GOTO      3
+#define STATE_GRAB      4
+#define STATE_COMEBACK  5
+#define STATE_PASS      6
+
 //namespace robot{
 
-    #define STATE_READY     0
-    #define STATE_FOLLOW    1
-    #define STATE_ASK       2
-    #define STATE_GOTO      3
-    #define STATE_GRAB      4
-    #define STATE_COMEBACK  5
-    #define STATE_PASS      6
 
-    typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
-    extern std::string strGoto;
-    extern sound_play::SoundRequest spk_msg;
-    extern ros::Publisher spk_pub;
-    extern ros::Publisher vel_pub;
-    extern std::string strToSpeak;
-    extern std::string strKeyWord;
-    extern ros::ServiceClient clientIAT;
-    extern xfyun_waterplus::IATSwitch srvIAT;
-    extern ros::ServiceClient cliGetWPName;
-    extern waterplus_map_tools::GetWaypointByName srvName;
-    extern ros::Publisher add_waypoint_pub;
-    extern ros::ServiceClient follow_start;
-    extern ros::ServiceClient follow_stop;
-    extern ros::ServiceClient follow_resume;
-    extern wpb_home_tutorials::Follow srvFlw;
-    extern ros::Publisher behaviors_pub;
-    extern std_msgs::String behavior_msg;
+typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
+extern std::string strGoto;
+extern sound_play::SoundRequest spk_msg;
+extern ros::Publisher spk_pub;
+extern ros::Publisher vel_pub;
 
-    extern ros::Subscriber grab_result_sub;
-    extern ros::Subscriber pass_result_sub;
-    extern bool bGrabDone;
-    extern bool bPassDone;
+extern std::string strToSpeak;
+extern std::string strKeyWord;
 
-    extern int nState;
-    extern int nDelay;
+extern ros::ServiceClient clientIAT;
+extern xfyun_waterplus::IATSwitch srvIAT;
+extern ros::ServiceClient cliGetWPName;
+extern waterplus_map_tools::GetWaypointByName srvName;
+extern ros::Publisher add_waypoint_pub;
+extern ros::ServiceClient follow_start;
+extern ros::ServiceClient follow_stop;
+extern ros::ServiceClient follow_resume;
+extern wpb_home_tutorials::Follow srvFlw;
+extern ros::Publisher behaviors_pub;
+extern std_msgs::String behavior_msg;
 
-    extern std::vector<std::string> arKeyword;
+extern ros::Subscriber grab_result_sub;
+extern ros::Subscriber pass_result_sub;
+extern bool bGrabDone;
+extern bool bPassDone;
+
+extern int nState;
+extern int nDelay;
+
+extern std::vector<std::string> arKeyword;
 
 //}
 

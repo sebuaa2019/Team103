@@ -65,6 +65,7 @@ add_executable(team103
   src/voice.cpp
   src/grab.cpp
   src/navigation.cpp
+  src/exception_handler.cpp
 )
 add_dependencies(team103 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(team103

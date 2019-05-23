@@ -3,8 +3,8 @@
 #include <string>
 #include <set>
 
-#include "function.h"
 #include "gmain.h"
+#include "function.h"
 #include "grab.h"
 #include "init.h"
 #include "navigation.h"
@@ -39,4 +39,6 @@ void FindKeyword_test();
 
 void Keyword_test_CB();
 
-void xxnav_test();
+void xxgotoitem_test();
+
+void xxcomeback_test();
