@@ -8,9 +8,9 @@ import os
 import base64
 import hashlib
 import struct
-import rospy 
+# import rospy 
 # ====== config ======
-rospy.init_node('pyws')
+# init_node('pyws')
 
 HOST = '127.0.0.1'
 PORT = 8000
