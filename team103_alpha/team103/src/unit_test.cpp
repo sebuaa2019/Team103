@@ -129,3 +129,69 @@ void PassResultCallback_test() {
     assert(bPassDone == true);
     cout << "PassResultCallback_test done." << endl;
 }
+
+
+
+// @author : Zhoushangchun
+void GrabSwitch_test_callback1(const std_msgs::String& res) {
+    assert(res.data == "grab start");
+}
+void GrabSwitch_test_callback2(const std_msgs::String& res) {
+    assert(res.data == "grab stop");
+}
+void GrabSwitch_test() {
+    cout << "GrabSwitch_test start..." << endl;
+    ros::NodeHandle n;
+    ros::Subscriber behaviors_test_sub = n.subscribe("/wpb_home/behaviors", 30, &GrabSwitch_test_callback1);
+    bool inActive = true;
+    GrabSwitch(inActive);
+    
+    // behaviors_test_sub.unsubscribe();
+    // behaviors_test_sub = n.subscribe("/wpb_home/behaviors", 30, &GrabSwitch_test_callback2);
+    // inActive = false;
+    // GrabSwitch(inActive);
+    cout << "GrabSwtich_test done." << endl;
+}
+
+
+
+void PassSwitch_test_callback1(const std_msgs::String& res) {
+    assert(res.data == "pass start");
+}
+void PassSwitch_test_callback2(const std_msgs::String& res) {
+    assert(res.data == "pass stop");
+}
+void PassSwitch_test() {
+    cout << "PassSwtich_test start..." << endl;
+    ros::NodeHandle n;
+    ros::Subscriber behaviors_test_sub = n.subscribe("/wpb_home/behaviors", 30, &PassSwitch_test_callback1);
+    bool inActive = true;
+    PassSwitch(inActive);
+    
+    // behaviors_test_sub.unsubscribe();
+    // behaviors_test_sub = n.subscribe("/wpb_home/behaviors", 30, &PassSwitch_test_callback2);
+    // inActive = false;
+    // PassSwitch(inActive);
+    cout << "PassSwtich_test done." << endl;
+}
+
+
+
+void xxgrab_test() {
+    cout << "xxgrab_test start..." << endl;
+    nDelay = 0;
+    nState = STATE_GRAB;
+    bGrabDone = true;
+    xxgrab();
+    assert(nDelay == 1);
+    assert(bGrabDone == false);
+    assert(nState == STATE_GRAB);
+
+    bGrabDone = true;
+    xxgrab();
+    assert(nDelay == 2);
+    assert(bGrabDone == true);
+    assert(nState == STATE_COMEBACK);
+    cout << "xxgrab_test done." << endl;
+}
+
