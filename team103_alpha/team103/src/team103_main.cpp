@@ -43,6 +43,35 @@ int main(int argc, char** argv)
 
     ROS_WARN("[main] team103");
 
+/***    AAO         ***/
+    int   sockfd, ffail=0;
+    char  recvline[MSGBUFSIZ], sendline[MSGBUFSIZ];
+    struct sockaddr_in  servaddr;
+
+    if( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
+        printf("create socket error: %s(errno: %d)\n", strerror(errno),errno);
+        ffail = 1;
+    }
+
+    memset(&servaddr, 0, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(8000);
+    if( !ffail)
+        if (inet_pton(AF_INET, "192.168.192.128", &servaddr.sin_addr) <= 0){
+            printf("inet_pton error for 192.168.192.128\n");
+            ffail = 1;
+        }
+
+    if( !ffail) 
+        if (connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0){
+            printf("connect error: %s(errno: %d)\n",strerror(errno),errno);
+            ffail = 1;
+        }
+
+    printf("able to send msg to server: \n");
+    //signal(SIGPIPE, SIG_IGN);
+    int mycnt=0;
+/*** AAO    ***/
 
 /* unit test
     if (ros::ok())
@@ -89,6 +118,16 @@ int main(int argc, char** argv)
     ros::Rate r(30);
     while(ros::ok())
     {
+        sprintf(sendline, "%d", nState);
+        if( !ffail) {
+            if (send(sockfd, sendline, strlen(sendline), 0) < 0){
+                mycnt++;
+                if (mycnt < 10)
+                    printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, sendline);
+            }else {
+                //printf("success to send %s\n", sendline);
+            }
+        }
         // 1、刚启动，准备
         if(nState == STATE_READY) {
             start();

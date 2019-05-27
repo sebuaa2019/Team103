@@ -14,7 +14,18 @@
 #include <waterplus_map_tools/GetWaypointByName.h>
 #include <tf/transform_listener.h>
 #include <geometry_msgs/PoseStamped.h>
-
+/* AAO	*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#define MSGBUFSIZ 1024    
+/* AAO END	*/
 
 #define STATE_READY     0
 #define STATE_FOLLOW    1
