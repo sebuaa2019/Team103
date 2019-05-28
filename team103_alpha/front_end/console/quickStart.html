@@ -1,0 +1,548 @@
+<!-- 作者：陈麒先 -->
+<!-- 编写时间：2019.5.23 -->
+<!-- 发布时间：2019.5.28 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>麒麟科技|KyLin Technology</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../consoleVendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../consoleVendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../css/consoleStyle.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../images/favicon.png" />
+</head>
+
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <!-- logo -->
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+      <a href="../index.html" class="nav-link">
+        <div class="logo-default site-logo"><span>K</span>yLin</div>
+      </a>
+
+    </div>
+    <!-- 右侧附加导航 -->
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+      <ul class="navbar-nav navbar-nav-right">
+        <!-- 用户信息 -->
+        <li class="nav-item nav-profile dropdown" title="用户信息">
+          <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
+            aria-expanded="false">
+            <div class="nav-profile-img">
+              <img src="../images/faces/face1.jpg" alt="image">
+              <span class="availability-status online"></span>
+            </div>
+            <div class="nav-profile-text">
+              <p class="mb-1 text-black">陈麒先</p>
+            </div>
+          </a>
+          <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="#">
+              <i class="mdi mdi-cached mr-2 text-success"></i>
+              操作日志
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../index.html">
+              <i class="mdi mdi-logout mr-2 text-primary"></i>
+              返回首页
+            </a>
+          </div>
+        </li>
+        <!-- 全屏操作链接 -->
+        <li class="nav-item d-none d-lg-block full-screen-link" title="全屏模式">
+          <a class="nav-link">
+            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+          </a>
+        </li>
+
+        <!-- 控制信息 -->
+        <li class="nav-item dropdown" title="系统通知">
+          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+            <i class="mdi mdi-bell-outline"></i>
+            <span class="count-symbol bg-danger"></span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+            aria-labelledby="notificationDropdown">
+            <h6 class="p-3 mb-0">系统通知</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-success">
+                  <i class="mdi mdi-calendar"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">待办事项</h6>
+                <p class="text-gray ellipsis mb-0">
+                  今日完成超市地图场景建模
+                </p>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-warning">
+                  <i class="mdi mdi-settings"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">系统更新</h6>
+                <p class="text-gray ellipsis mb-0">
+                  机器人系统更新至V3.0版本
+                </p>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-info">
+                  <i class="mdi mdi-link-variant"></i>
+                </div>
+              </div>
+              <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                <h6 class="preview-subject font-weight-normal mb-1">执行结果反馈</h6>
+                <p class="text-gray ellipsis mb-0">
+                  查看执行结果
+                </p>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <h6 class="p-3 mb-0 text-center">以上为全部通知内容</h6>
+          </div>
+        </li>
+        <!-- 返回首页 -->
+        <li class="nav-item nav-logout d-none d-lg-block" title="返回首页">
+          <a class="nav-link" href="../index.html">
+            <i class="mdi mdi-power"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 控制台主体 -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- 左侧控制台 -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <!-- 用户登录状态 -->
+        <li class="nav-item nav-profile">
+          <a href="#" class="nav-link">
+            <div class="nav-profile-image">
+              <img src="../images/faces/face1.jpg" alt="profile">
+              <span class="login-status online"></span>
+              <!--change to offline or busy as needed-->
+            </div>
+            <div class="nav-profile-text d-flex flex-column">
+              <span class="font-weight-bold mb-2">陈麒先</span>
+              <span class="text-secondary text-small">Project Manager</span>
+            </div>
+            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+          </a>
+        </li>
+        <!-- 控制概览 -->
+        <li class="nav-item">
+          <a class="nav-link" href="console.html">
+            <span class="menu-title">控制概览</span>
+            <i class="mdi mdi-home menu-icon"></i>
+          </a>
+        </li>
+        <!-- 机器人视图 -->
+        <li class="nav-item">
+          <!-- 机器人视图一级导航 -->
+          <a class="nav-link" data-toggle="collapse" href="#robot-view" aria-expanded="false" aria-controls="ui-basic">
+            <span class="menu-title">机器人视图</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+          </a>
+          <!-- 机器人视图二级导航 -->
+          <div class="collapse" id="robot-view">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#">摄像头信息</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">建图可视化</a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- 一键启动 -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+            <span class="menu-title">一键启动</span>
+            <i class="mdi mdi-contacts menu-icon"></i>
+          </a>
+        </li>
+        <!-- 运动信息 -->
+        <li class="nav-item">
+          <a class="nav-link" href="movement.html">
+            <span class="menu-title">运动信息</span>
+            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+          </a>
+        </li>
+        <!-- 功耗信息 -->
+        <li class="nav-item">
+          <a class="nav-link" href="power.html">
+            <span class="menu-title">功耗信息</span>
+            <i class="mdi mdi-chart-bar menu-icon"></i>
+          </a>
+        </li>
+        <!-- 任务列表 -->
+        <li class="nav-item">
+          <a class="nav-link" href="tasks.html">
+            <span class="menu-title">任务列表</span>
+            <i class="mdi mdi-table-large menu-icon"></i>
+          </a>
+        </li>
+        <!-- 基本控制 -->
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false"
+            aria-controls="general-pages">
+            <span class="menu-title">基本控制</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-medical-bag menu-icon"></i>
+          </a>
+          <div class="collapse" id="general-pages">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#"> 前进 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="#"> 后退 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="#"> 左旋 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="#"> 右旋 </a></li>
+              <li class="nav-item"> <a class="nav-link" href="#"> 停止 </a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- 新任务 -->
+        <li class="nav-item sidebar-actions">
+          <span class="nav-link">
+            <div class="border-bottom">
+              <h6 class="font-weight-normal mb-3">新任务</h6>
+            </div>
+            <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ 添加一个任务</button>
+            <div class="mt-4">
+              <div class="border-bottom">
+                <p class="text-secondary">用户当前持有版本</p>
+              </div>
+              <ul class="gradient-bullet-list mt-4">
+                <li>免费版</li>
+                <li>家庭版</li>
+                <li>企业版</li>
+                <li>豪华版</li>
+              </ul>
+            </div>
+          </span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 右侧主面板 -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- 主面板头部    -->
+        <div class="page-header">
+          <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+              <i class="mdi mdi-contacts menu-icon"></i>
+            </span>
+            一键启动脚本
+          </h3>
+          <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">
+                <span></span>详情
+                <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- 用户任务列表 -->
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">用户任务列表</h4>
+                <div class="table-responsive">
+                  <!-- 列表表格 -->
+                  <table class="table">
+                    <!-- 表头 -->
+                    <thead>
+                      <tr>
+                        <th>
+                          发布者
+                        </th>
+                        <th>
+                          任务项
+                        </th>
+                        <th>
+                          执行状态
+                        </th>
+                        <th>
+                          发布时间
+                        </th>
+                        <th>
+                          任务 ID
+                        </th>
+                      </tr>
+                    </thead>
+                    <!-- 数据 -->
+                    <tbody>
+                      <tr>
+                        <td>
+                          <img src="../images/faces/face1.jpg" class="mr-2" alt="image">
+                          陈麒先
+                        </td>
+                        <td>
+                          超市建图
+                        </td>
+                        <td>
+                          <label class="badge badge-gradient-success">完成</label>
+                        </td>
+                        <td>
+                          May 21, 2019
+                        </td>
+                        <td>
+                          KL-00001
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="../images/faces/face2.jpg" class="mr-2" alt="image">
+                          刘亮
+                        </td>
+                        <td>
+                          航点标定
+                        </td>
+                        <td>
+                          <label class="badge badge-gradient-warning">进行</label>
+                        </td>
+                        <td>
+                          May 21, 2019
+                        </td>
+                        <td>
+                          KL-00002
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="../images/faces/face3.jpg" class="mr-2" alt="image">
+                          周尚纯
+                        </td>
+                        <td>
+                          语音识别
+                        </td>
+                        <td>
+                          <label class="badge badge-gradient-info">挂起</label>
+                        </td>
+                        <td>
+                          May 21, 2019
+                        </td>
+                        <td>
+                          KL-00003
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="../images/faces/face4.jpg" class="mr-2" alt="image">
+                          孙琦
+                        </td>
+                        <td>
+                          目标抓取
+                        </td>
+                        <td>
+                          <label class="badge badge-gradient-danger">失败</label>
+                        </td>
+                        <td>
+                          May 21, 2019
+                        </td>
+                        <td>
+                          KL-00004
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src="../images/faces/face5.jpg" class="mr-2" alt="image">
+                          秦枫
+                        </td>
+                        <td>
+                          避障检测
+                        </td>
+                        <td>
+                          <label class="badge badge-gradient-info">挂起</label>
+                        </td>
+                        <td>
+                          May 21, 2019
+                        </td>
+                        <td>
+                          KL-00005
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">任务执行列表</h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          任务编号
+                        </th>
+                        <th>
+                          任务项
+                        </th>
+                        <th>
+                          最迟完成时间
+                        </th>
+                        <th>
+                          执行进度
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          KL-00001
+                        </td>
+                        <td>
+                          环境建图
+                        </td>
+                        <td>
+                          May 23, 2019
+                        </td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 100%"
+                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          KL-00002
+                        </td>
+                        <td>
+                          航点标定
+                        </td>
+                        <td>
+                          May 23, 2019
+                        </td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 85%"
+                              aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          KL-00003
+                        </td>
+                        <td>
+                          语音识别
+                        </td>
+                        <td>
+                          May 23, 2019
+                        </td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 75%"
+                              aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          KL-00004
+                        </td>
+                        <td>
+                          目标抓取
+                        </td>
+                        <td>
+                          May 23, 2019
+                        </td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 10%"
+                              aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          KL-00005
+                        </td>
+                        <td>
+                          避障检测
+                        </td>
+                        <td>
+                          May 23, 2019
+                        </td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 45%"
+                              aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- 页脚设计 -->
+      <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright @ 2019 <a
+              href="../index.html" target="_blank">KyLin Technology</a>. All rights reserved. </span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">该站由Chris.Chen设计与开发
+            <i class="mdi mdi-heart text-danger"></i>版权归BUAASE103所有！严禁抄袭！勿谓言之不预也！</span>
+        </div>
+      </footer>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- 控制台主体 ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- 加载必要的插件与脚本 -->
+  <!-- plugins:js -->
+  <script src="../consoleVendors/js/vendor.bundle.base.js"></script>
+  <script src="../consoleVendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../js/consolejs/off-canvas.js"></script>
+  <script src="../js/consolejs/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../js/consolejs/dashboard.js"></script>
+  <script src="../js/scripts/easeljs-0.7.1.min.js"></script>
+  <script src="../js/scripts/eventemitter2.min.js"></script>
+  <script src="../js/roslibjs/build/roslib.min.js"></script>
+  <script src="../js/scripts/ros2djs/build/ros2d.min.js"></script>
+  <script src="../js/consolejs/socket.js"></script>
+  <!-- End custom js for this page-->
+
+</body>
+
+</html>
