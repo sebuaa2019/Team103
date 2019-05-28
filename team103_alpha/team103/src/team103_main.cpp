@@ -7,9 +7,6 @@
 #include "grab.h"
 #include "navigation.h"
 #include "unit_test.h"
-// namespace robot{
-// xianxian hao li hai X 2
-// }
 
 
 int main(int argc, char** argv)
@@ -73,7 +70,7 @@ int main(int argc, char** argv)
     int mycnt=0;
 /*** AAO    ***/
 
-/* unit test
+/* unit test begin 
     if (ros::ok())
 {
     follow_test();
@@ -109,8 +106,7 @@ int main(int argc, char** argv)
 
     xxnav_test();
 }
-*/
-//*
+unit test end*/
 
 
 
@@ -167,7 +163,6 @@ int main(int argc, char** argv)
         r.sleep();
     }
 
-    // */
 
     return 0;
 }
