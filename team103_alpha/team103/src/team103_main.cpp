@@ -128,6 +128,11 @@ unit test end*/
                     //printf("success to send %s\n", sendline);
                 }
             }
+            if (recv(sockfd, recvline, strlen(recvline)) < 0) {
+                printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, recvline);
+            }else {
+                xxgotoitem();
+            }
         }
         // 1、刚启动，准备
         if(nState == STATE_READY) {

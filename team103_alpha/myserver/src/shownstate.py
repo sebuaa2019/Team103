@@ -41,7 +41,8 @@ HANDSHAKE_STRING = "HTTP/1.1 101 Switching Protocols\r\n" \
 statusBuf = ""
 statusChanged = False
 threadLock = threading.Lock()
-
+toResume = False
+resumeLock = threading.Lock()
 class Th(threading.Thread):
 	def __init__(self, connection, addr):
 		threading.Thread.__init__(self)
@@ -49,11 +50,16 @@ class Th(threading.Thread):
 		self.addr = addr
 
 	def run(self):
-		global statusBuf,threadLock, statusChanged
+		global statusBuf,threadLock, statusChanged, toResume, resumeLock
 		if addr[0] == HOST:
 			while True:
 				thedata = self.con.recv(BUFSIZ)
 				if not thedata:
+					resumeLock.acquire()
+					if toResume:
+						self.con.send("resume")
+						toResume = False
+					resumeLock.release()
 					continue;
 				threadLock.acquire()
 				statusChanged = True
@@ -103,6 +109,10 @@ class Th(threading.Thread):
 					if (statusBuf == "1"):#STATE_FOLLOW
 						cmd = "rosservice call wpb_home_follow/resume 0.7"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
+					if (statusBuf == "3"):#GOTO
+						resumeLock.acquire()
+						toResume = True
+						resumeLock.release()
 					threadLock.acquire()
 				else:
 					print "othermsg"
