@@ -68,6 +68,7 @@ int main(int argc, char** argv)
     printf("able to send msg to server: \n");
     //signal(SIGPIPE, SIG_IGN);
     int mycnt=0;
+    int _nState=nState;
 /*** AAO    ***/
 
 /* unit test begin 
@@ -116,12 +117,16 @@ unit test end*/
     {
         sprintf(sendline, "%d", nState);
         if( !ffail) {
-            if (send(sockfd, sendline, strlen(sendline), 0) < 0){
-                mycnt++;
-                if (mycnt < 10)
-                    printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, sendline);
-            }else {
-                //printf("success to send %s\n", sendline);
+            if (nState != _nState) {
+                _nState = nState;
+                
+                if (send(sockfd, sendline, strlen(sendline), 0) < 0){
+                    mycnt++;
+                    if (mycnt < 10)
+                        printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, sendline);
+                }else {
+                    //printf("success to send %s\n", sendline);
+                }
             }
         }
         // 1、刚启动，准备

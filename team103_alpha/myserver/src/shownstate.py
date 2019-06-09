@@ -39,6 +39,7 @@ HANDSHAKE_STRING = "HTTP/1.1 101 Switching Protocols\r\n" \
                    "WebSocket-Location: ws://{2}/chat\r\n" \
                    "WebSocket-Protocol:chat\r\n\r\n"
 statusBuf = ""
+statusChanged = False
 threadLock = threading.Lock()
 
 class Th(threading.Thread):
@@ -48,13 +49,14 @@ class Th(threading.Thread):
 		self.addr = addr
 
 	def run(self):
-		global statusBuf,threadLock
+		global statusBuf,threadLock, statusChanged
 		if addr[0] == HOST:
 			while True:
 				thedata = self.con.recv(BUFSIZ)
 				if not thedata:
 					continue;
 				threadLock.acquire()
+				statusChanged = True
 				statusBuf = thedata
 				#print statusBuf
 				threadLock.release()
@@ -65,9 +67,9 @@ class Th(threading.Thread):
 				msg = self.recv_data(BUFSIZ)
 				if not msg:
 					threadLock.acquire()
-					if len(statusBuf) != 0:
+					if statusChanged:
 						self.send_data(statusBuf)
-						statusBuf = ""
+						statusChanged = False
 					threadLock.release()
 					continue
 				if (msg == 'start'):
@@ -85,7 +87,23 @@ class Th(threading.Thread):
 							if line == "":
 								break
 					proc.stdout.close()
-
+				if (msg == 'stop'):
+					threadLock.acquire()
+					if (statusBuf == "1"):#STATE_FOLLOW
+						cmd = "rosservice call wpb_home_follow/stop 0"
+						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
+					else if (statusBuf == "3"):#STATE_GOTO
+						cmd = "rostopic pub -1 /move_base/cancel actionlib_msgs/GoalID -- {}"
+						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
+					else :
+						print("error stop time")
+					threadLock.release()
+				if (msg == 'resume'):
+					threadLock.acquire()
+					if (statusBuf == "1"):#STATE_FOLLOW
+						cmd = "rosservice call wpb_home_follow/resume 0.7"
+						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
+					threadLock.acquire()
 				else:
 					print "othermsg"
 		self.con.close()
