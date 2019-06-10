@@ -54,8 +54,8 @@ int main(int argc, char** argv)
     servaddr.sin_family = AF_INET;
     servaddr.sin_port = htons(8000);
     if( !ffail)
-        if (inet_pton(AF_INET, "192.168.192.128", &servaddr.sin_addr) <= 0){
-            printf("inet_pton error for 192.168.192.128\n");
+        if (inet_pton(AF_INET, "192.168.43.229", &servaddr.sin_addr) <= 0){
+            printf("inet_pton error for 192.168.43.229\n");
             ffail = 1;
         }
 
@@ -118,19 +118,23 @@ unit test end*/
         sprintf(sendline, "%d", nState);
         if( !ffail) {
             if (nState != _nState) {
+		        printf("$$$$ 	nstate = %d\t _nstate = %d\n", nState, _nState);
                 _nState = nState;
                 
                 if (send(sockfd, sendline, strlen(sendline), 0) < 0){
                     mycnt++;
-                    if (mycnt < 10)
+                    if (mycnt < 3)
                         printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, sendline);
                 }else {
                     //printf("success to send %s\n", sendline);
                 }
             }
-            if (recv(sockfd, recvline, strlen(recvline)) < 0) {
-                printf("send msg error: %s(errno: %d)  %s\n", strerror(errno), errno, recvline);
-            }else {
+            if (recv(sockfd, recvline, MSGBUFSIZ, MSG_DONTWAIT) < 0) {
+                if (nState == STATE_ASK)
+                    printf("@@@@  recv msg error: %s(errno: %d)  %s\n", strerror(errno), errno, recvline);
+            }
+	        else {              
+                nState = STATE_GOTO;
                 xxgotoitem();
             }
         }

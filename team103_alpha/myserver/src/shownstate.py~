@@ -13,11 +13,11 @@ import rospy
 
 rospy.init_node('shownstate')
 def get_host_ip(): 
-	s = socket(AF_INET, SOCK_DGRAM)
-	s.connect(('8.8.8.8', 80))
-	ip = s.getsockname()[0]
-	s.close()
-	return ip
+    s = socket(AF_INET, SOCK_DGRAM)
+    s.connect(('8.8.8.8', 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
 
 HOST = get_host_ip()
 print HOST
@@ -25,19 +25,19 @@ print HOST
 PORT=8000
 BUFSIZ=1024
 ADDR = (HOST,PORT) 
-
+  
 tcpSerSock=socket(AF_INET,SOCK_STREAM) 
 tcpSerSock.bind(ADDR) 
 tcpSerSock.listen(5) 
-
+ 
 
 MAGIC_STRING = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 HANDSHAKE_STRING = "HTTP/1.1 101 Switching Protocols\r\n" \
-					"Upgrade:websocket\r\n" \
-					"Connection: Upgrade\r\n" \
-					"Sec-WebSocket-Accept: {1}\r\n" \
-					"WebSocket-Location: ws://{2}/chat\r\n" \
-					"WebSocket-Protocol:chat\r\n\r\n"
+                   "Upgrade:websocket\r\n" \
+                   "Connection: Upgrade\r\n" \
+                   "Sec-WebSocket-Accept: {1}\r\n" \
+                   "WebSocket-Location: ws://{2}/chat\r\n" \
+                   "WebSocket-Protocol:chat\r\n\r\n"
 statusBuf = ""
 statusChanged = False
 threadLock = threading.Lock()
@@ -60,7 +60,7 @@ class Th(threading.Thread):
 						self.con.send("resume")
 						toResume = False
 					resumeLock.release()
-					continue
+					continue;
 				threadLock.acquire()
 				statusChanged = True
 				statusBuf = thedata
@@ -110,7 +110,7 @@ class Th(threading.Thread):
 					if (statusBuf == "1"):#STATE_FOLLOW
 						cmd = "rosservice call wpb_home_follow/resume 0.7"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
-					if (statusBuf == "2"):#GOTO
+					if (statusBuf == "3"):#GOTO
 						resumeLock.acquire()
 						toResume = True
 						resumeLock.release()
@@ -144,7 +144,7 @@ class Th(threading.Thread):
 				i += 1
 			return raw_str
 
-# send data
+    # send data
 	def send_data(self, data):
 		if data:
 			data = str(data)
@@ -189,12 +189,12 @@ def handshake(con):
 	con.send(str_handshake)
 	return True
 
-
+ 
 if __name__ == '__main__': 
 	#t.start() 
 	print 'waiting for connecting...'
 	while True: 
-		clientSock,addr = tcpSerSock.accept() 
+ 		clientSock,addr = tcpSerSock.accept() 
 		print 'connected from:', addr
 		#clientSock.setblocking(0)
 		if addr[0] != HOST:
