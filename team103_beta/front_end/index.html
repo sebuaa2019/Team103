@@ -1,0 +1,655 @@
+<!-- 作者：陈麒先 -->
+<!-- 编写时间：2019.5.15 -->
+<!-- 发布时间：2019.5.28 -->
+<!DOCTYPE html>
+<!-- 浏览器兼容 -->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="KyLin Technology">
+
+  <meta name="author" content="">
+
+  <title>麒麟科技|KyLin Technology</title>
+
+  <!-- 移动端适配 -->
+  <!-- Mobile Specific Meta
+  ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+  <!-- CSS
+  ================================================== -->
+  <!-- 插件加载 -->
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="plugins/themefisher-font/style.css">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Lightbox.min css -->
+  <link rel="stylesheet" href="plugins/lightbox2/dist/css/lightbox.min.css">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+  <!-- CSS样式加载 -->
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 额外CSS样式加载 -->
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Fancybox -->
+  <link rel="stylesheet" href="css/jquery.fancybox.css">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <!-- Animate -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- Main Responsive -->
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- 配色文件加载 -->
+  <!-- Colors -->
+  <link rel="stylesheet" type="text/css" href="css/colors/green.css" title="green">
+  <link rel="stylesheet" type="text/css" href="css/colors/red.css" title="light-red">
+  <link rel="stylesheet" type="text/css" href="css/colors/blue.css" title="blue">
+  <link rel="stylesheet" type="text/css" href="css/colors/light-blue.css" title="light-blue">
+  <link rel="stylesheet" type="text/css" href="css/colors/yellow.css" title="yellow">
+  <link rel="stylesheet" type="text/css" href="css/colors/light-green.css" title="light-green">
+
+
+</head>
+
+<body id="body">
+
+<!--启动加载界面(下载JS等资源文件的等待界面)
+  ==================================== -->
+  <div id="preloader">
+    <div class='preloader'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!--
+  End 启动加载
+  ==================================== -->
+
+
+
+
+<!--顶部固定导航
+==================================== -->
+  <header class="navigation navbar navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- 响应导航按钮 -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">KyLin Technology麒麟科技</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- /响应导航按钮 -->
+        <!-- 麒麟科技logo -->
+        <a class="navbar-brand logo" href="index.html">
+
+          <div class="logo-default site-logo"><span>K</span>yLin</div>
+          <div class="logo-white site-logo"><span>K</span>yLin</div>
+        </a>
+        <!-- /麒麟科技logo -->
+      </div>
+      <!-- 右侧导航栏 -->
+      <nav class="collapse navbar-collapse navbar-right">
+        <ul id="nav" class="nav navbar-nav menu">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">机器人业务<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="console/console.html">用户控制台</a></li>
+              <li><a href="help.html">快速使用说明</a></li>
+              <li><a href="buy.html">产品购买</a></li>
+            </ul>
+          </li>
+          <li><a href="aboutus.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">欢迎您，Master先先<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="console/console.html">我的机器人</a></li>
+              <li><a href="404.html">用户信息</a></li>
+              <li><a href="404.html">退出登录</a></li>
+            </ul>
+          </li>
+          </li>
+        </ul>
+      </nav>
+      <!-- /右侧导航栏 -->
+    </div>
+  </header>
+  <!--
+/顶部固定导航
+==================================== -->
+
+
+
+
+<!--欢迎模块
+==================================== -->
+
+  <section class="hero-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block animated bounceInLeft">
+            <h1>麒麟科技<br>KyLin Technology</h1>
+            <p>麒麟之才，敢为人先<br>
+              科技改变生活。欢迎使用麒麟科技智能机器人！
+            </p>
+            <ul class="list-inline available">
+              <li><span>系统支持 :</span></li>
+              <li><i class="fa fa-android"></i></li>
+              <li><i class="fa fa-apple"></i></li>
+              <li><i class="fa fa-windows"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--产品简介
+==================================== -->
+  <section class="service-2 section">
+    <div class="container">
+      <div class="row">
+
+        <!-- section title -->
+        <div class="title text-center wow fadeInDown">
+          <h2>产品简介</h2>
+          <p>一起来看看麒麟科技CEO对我们产品的定位. </p>
+          <div class="border"></div>
+        </div>
+        <!-- /section title -->
+
+        <div class="col-md-4 text-center">
+          <img src="images/about/member.jpg" class="inline-block wow fadeInLeft" alt="">
+        </div>
+        <div class="col-md-8">
+          <div class="row text-center">
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp">
+              <div class="service-item">
+                <i class="tf-ion-ios-email-outline"></i>
+                <h4>记录日志</h4>
+                <p>机器人能够记录其接受指令情况与运行状态信息，通过在线消息的形式反馈给用户。</p>
+              </div>
+            </div><!-- END COL -->
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp">
+              <div class="service-item">
+                <i class="tf-ion-ios-briefcase-outline"></i>
+                <h4>目标抓取</h4>
+                <p>机器人能够根据用户语音提示指令进行目标物的抓取与送还。</p>
+              </div>
+            </div><!-- END COL -->
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp">
+              <div class="service-item">
+                <i class="tf-ion-ios-alarm-outline"></i>
+                <h4>实时标点</h4>
+                <p>机器人能够跟随管理员探索整个环境空间，形成地图信息，建模时能够实时反馈是地图信息是否完成。</p>
+              </div>
+            </div><!-- END COL -->
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInUp">
+              <div class="service-item">
+                <i class="tf-ion-ios-locked-outline"></i>
+                <h4>安全保障</h4>
+                <p>麒麟科技的智能机器人产品具有绝佳的安全保障措施与异常处理机制，以保障用户安全作为首要目标，同时将机器人可能受到的损害降到最低。</p>
+              </div>
+            </div><!-- END COL -->
+          </div>
+        </div>
+      </div> <!-- End row -->
+    </div> <!-- End container -->
+  </section> <!-- End section -->
+
+<!--产品形态
+==================================== -->
+  <section class="about-2 section" id="about">
+    <div class="container">
+      <div class="row">
+        <!-- section title -->
+        <div class="title text-center wow fadeInDown">
+          <h2>产品形态</h2>
+          <p>麒麟智能机器人的硬件形态与结构组成简介</p>
+          <div class="border"></div>
+        </div>
+        <!-- /section title -->
+
+        <div class="col-md-6">
+          <img src="images/about/about-2.png" class="img-responsive wow fadeInLeft" alt="">
+        </div>
+        <div class="col-md-6 wow fadeInRight">
+          <ul class="checklist">
+            <li>硬件包括嵌入式开发板+各类传感器+运动装置+机械臂装置</li>
+            <li>麒麟智能机器人重量约为30kg（包含抓取组件），承载能力10kg</li>
+            <li>麒麟智能机器人设计工作温度为15°C到35°C之间，使用中务必远离明火和其他热源</li>
+            <li>面板上保留有总开关、急停开关、充电接口、2个USB接口供用户使用。尾部为电池槽，可以快速更换电池模块</li>
+            <li>在麒麟伺服电机模块内的驱动控制板算法中，将输入的速度信息进行了单位换算，输入速度为减速器输出轴的转速</li>
+            <li>控制器内部运行了麒麟智能机器人专用固件，负责PC机于机器人之间的数据交互</li>
+            <li>机器人的电源由电池模块供给，该电源模块内部由7枚3500mA/h容量的锂离子电池串联组成，内置电池保护板</li>
+            <li>麒麟控制器通过RS485总线与麒麟伺服电机模块通讯，以50ms为周期下发速度、位置等控制信息，并接收伺服电机反馈的实时位置和绕组电流信息</li>
+          </ul>
+          <a href="404.html" class="btn btn-main mt-20">了解更多</a>
+        </div>
+      </div> <!-- End row -->
+    </div> <!-- End container -->
+  </section> <!-- End section -->
+
+
+
+<!--用户反馈
+		==================================== -->
+
+  <section class="counter-wrapper section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center wow fadeInDown">
+          <div class="title">
+            <h2>用户反馈</h2>
+            <p>用户的满意是麒麟科技的不懈追求。<br>公司成立至今我们已收到来自世界各地各个行业的好评。</p>
+          </div>
+        </div>
+        <!-- first count item -->
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center wow fadeInLeft" data-wow-delay="0.2s">
+          <div class="counters-item">
+            <i class="tf-ion-ios-alarm-outline"></i>
+            <div>
+              <span class="counter" data-to="10287">0</span>
+            </div>
+            <h3>位用户得到优质服务</h3>
+          </div>
+        </div>
+        <!-- end first count item -->
+
+        <!-- second count item -->
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center wow fadeInLeft" data-wow-delay="0.5s">
+          <div class="counters-item">
+            <i class="tf-ion-ios-analytics-outline"></i>
+            <div>
+              <span class="counter" data-to="13141">0</span>
+            </div>
+            <h3>条用户好评记录</h3>
+          </div>
+        </div>
+        <!-- end second count item -->
+
+        <!-- third count item -->
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center wow fadeInLeft" data-wow-delay="0.8s">
+          <div class="counters-item">
+            <i class="tf-ion-ios-compose-outline"></i>
+            <div>
+              <span class="counter" data-to="99">0</span>
+            </div>
+            <h3>种复杂应用场景</h3>
+
+          </div>
+        </div>
+        <!-- end third count item -->
+
+        <!-- fourth count item -->
+        <div class="col-md-3 col-sm-6 col-xs-6 text-center wow fadeInLeft" data-wow-delay="1.1s">
+          <div class="counters-item kill-border">
+            <i class="tf-ion-ios-bolt-outline"></i>
+            <div>
+              <span class="counter" data-to="1606">0</span>
+            </div>
+            <h3>家企业合作伙伴</h3>
+          </div>
+        </div>
+        <!-- end fourth count item -->
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </section> <!-- end section -->
+
+<!--联系我们
+==================================== -->
+<section class="call-to-action section">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center wow fadeInDown">
+        <h2>关于我们</h2>
+        <p>一群敢想敢做的年轻人<br>
+          我们坚信：<br>
+          知识改变命运，教育改变中国，代码改变世界。<br>
+          我们一道努力，<br>
+          为建设扎根于中国大地的世界一流大学而不懈奋斗！<br>
+          谨寄千里共明月，随君一路北航。</p>
+        <a href="" class="btn btn-main">联系我们</a>
+      </div>
+    </div> <!-- End row -->
+    <!-- <div class="bbg"></div> -->
+  </div> <!-- End container -->
+
+</section> <!-- End section -->
+
+  <!-- 关于我们
+=========================================== -->
+
+  <section class="testimonial section" id="testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- testimonial wrapper -->
+          <div class="testimonial-slider">
+            <!-- 陈麒先testimonial single -->
+            <div class="item text-center">
+              <i class="tf-ion-chatbubbles"></i>
+              <!-- 成员 info -->
+              <div class="client-details">
+                <p>项目经理，负责团队内日常打杂，为组里大佬们端茶倒水<br>
+                  热衷划水，不到最后一刻誓不动手编码，擅长各种极限操作<br>
+                  日常逗比，活跃团队氛围，让组里大佬们能开心编码<br>
+                  菜鸟一枚，看组内大佬八仙过海各显神通，抱紧大腿，紧跟大佬步伐走向胜利！</p>
+              </div>
+              <!-- /成员 info -->
+              <!-- 成员 photo -->
+              <div class="client-thumb">
+                <img src="images/client-logo/chenqixian.jpg" class="img-responsive" alt="">
+              </div>
+              <div class="client-meta">
+                <h3>陈麒先 Chris Chen</h3>
+                <span>麒麟科技CEO</span>
+              </div>
+              <!-- /client photo -->
+            </div>
+            <!-- /testimonial single -->
+
+            <!-- testimonial single -->
+            <div class="item text-center">
+              <i class="tf-ion-chatbubbles"></i>
+              <!-- client info -->
+              <div class="client-details">
+                <p>核心开发人员，团队技术难题攻关<br>
+                  数据库架构师，系统高并发架构设计<br>
+                  多年编程经验，最优化系统性能<br>
+                  团队颜值担当，代言产品形象</p>
+              </div>
+              <!-- /client info -->
+              <!-- client photo -->
+              <div class="client-thumb">
+                <img src="images/client-logo/liuliang.jpg" class="img-responsive" alt="">
+              </div>
+              <div class="client-meta">
+                <h3>刘亮 Bright Liu
+                </h3>
+                <span>麒麟科技CIO</span>
+              </div>
+              <!-- /client photo -->
+            </div>
+            <!-- /testimonial single -->
+
+            <!-- testimonial single -->
+            <div class="item text-center">
+              <i class="tf-ion-chatbubbles"></i>
+              <!-- client info -->
+              <div class="client-details">
+                <p>核心技术人员，解决团队技术难题<br>
+                  系统架构师，具有丰富的系统架构经验<br>
+                  系统分析人员，追踪产品质量，指导产品迭代<br>
+                  团队颜值担当，鼓舞团队士气，提升团队工作效率</p>
+              </div>
+              <!-- /client info -->
+              <!-- client photo -->
+              <div class="client-thumb">
+                <img src="images/client-logo/zhoushangchun.jpg" class="img-responsive" alt="">
+              </div>
+              <div class="client-meta">
+                <h3>周尚纯 Aurora Zhou</h3>
+                <span>麒麟科技CTO</span>
+              </div>
+              <!-- /client photo -->
+            </div>
+            <!-- /testimonial single -->
+            <!-- testimonial single -->
+            <div class="item text-center">
+                <i class="tf-ion-chatbubbles"></i>
+                <!-- client info -->
+                <div class="client-details">
+                  <p>核心开发人员，团队技术难题攻关<br>
+                    系统实施人员，保证产品如期上线与发布<br>
+                    极强算法能力，在多次迭代中优化产品性能<br>
+                    团队颜值担当，鼓舞团队士气，提升团队工作效率</p>
+                </div>
+                <!-- /client info -->
+                <!-- client photo -->
+                <div class="client-thumb">
+                  <img src="images/client-logo/sunqi.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="client-meta">
+                  <h3>孙琦 Susie Sun</h3>
+                  <span>麒麟科技COO</span>
+                </div>
+                <!-- /client photo -->
+              </div>
+              <!-- /testimonial single -->
+              <!-- testimonial single -->
+            <div class="item text-center">
+                <i class="tf-ion-chatbubbles"></i>
+                <!-- client info -->
+                <div class="client-details">
+                  <p>核心技术人员，解决团队技术难题<br>
+                    系统测试人员，保障产品顺利处理多种复杂的异常情况<br>
+                    文档评审人员，严把产品质量关，保证文档符合开发规范<br>
+                    团队颜值担当，鼓舞团队士气，提升团队工作效率</p>
+                </div>
+                <!-- /client info -->
+                <!-- client photo -->
+                <div class="client-thumb">
+                  <img src="images/client-logo/qinfeng.jpg" class="img-responsive" alt="">
+                </div>
+                <div class="client-meta">
+                  <h3>秦枫 Eurus Qin</h3>
+                  <span>麒麟科技CFO</span>
+                </div>
+                <!-- /client photo -->
+              </div>
+              <!-- /testimonial single -->
+          </div>
+        </div> <!-- end col lg 12 -->
+      </div> <!-- End row -->
+    </div> <!-- End container -->
+  </section> <!-- End Section -->
+
+<!--功能介绍
+	=========================================== -->
+
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="row">
+
+        <!-- section title -->
+        <div class="title text-center wow fadeInDown">
+          <h2> 迭代<span class="color">历史</span></h2>
+          <div class="border"></div>
+          <p>麒麟科技机器人自2019年5月初以来，历经3轮版本迭代，<br>全力为用户打造极致完美的用户体验。<br>
+            用户的满意永远是麒麟科技的不懈追求和不断前行的动力！
+          </p>
+        </div>
+        <!-- /section title -->
+        <!-- single blog post -->
+        <article class="col-md-4 col-sm-6 col-xs-12 clearfix ">
+          <div class="post-item wow fadeInLeft " data-wow-delay="0.3s">
+            <div class="media-wrapper">
+              <img src="images/blog/post-1.jpg" alt="amazing caves coverimage" class="img-responsive">
+            </div>
+
+            <div class="content">
+              <h3><a href="#body">麒麟机器人v1.0</a></h3>
+              <p>简单的用户控制台界面<br>
+                 基本的机器人运动控制<br>
+                 初等的异常处理</p>
+              <a class="btn btn-main" href="404.html">了解详情</a>
+            </div>
+          </div>
+        </article>
+        <!-- /single blog post -->
+
+        <!-- single blog post -->
+        <article class="col-md-4 col-sm-6 col-xs-12 ">
+          <div class="post-item wow fadeInLeft" data-wow-delay="0.7s">
+            <div class="media-wrapper">
+              <img src="images/blog/post-2.jpg" alt="amazing caves coverimage" class="img-responsive">
+            </div>
+
+            <div class="content">
+              <h3><a href="single-post.html">麒麟机器人v2.0</a></h3>
+              <p>相对完善的用户控制台界面<br>
+                实现基本场景简单环境的机器人运动与抓取控制<br>
+                一定规模的异常处理</p>
+              <a class="btn btn-main" href="404.html">了解详情</a>
+            </div>
+          </div>
+        </article>
+        <!-- end single blog post -->
+
+        <!-- single blog post -->
+        <article class="col-md-4 col-sm-6 col-xs-12 ">
+          <div class="post-item wow fadeInLeft" data-wow-delay="1.1s">
+            <div class="media-wrapper" >
+              <img src="images/blog/post-3.jpg" alt="amazing caves coverimage" class="img-responsive">
+            </div>
+
+            <div class="content">
+              <h3><a href="single-post.html">麒麟机器人v3.0</a></h3>
+              <p>完善的用户控制台界面<br>
+                能够实现复杂多变环境中的机器人运动与抓取控制<br>
+                相对完备的异常处理响应机制</p>
+              <a class="btn btn-main" href="404.html">了解详情</a>
+            </div>
+          </div>
+        </article>
+        <!-- end single blog post -->
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+  </section> <!-- end section -->
+
+  <footer id="footer" class="bg-one">
+    <div class="top-footer wow fadeInUp">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <h3>关于我们</h3>
+            <p>一群敢想敢做的年轻人<br>
+              为建设扎根于中国大地的世界一流大学而不懈奋斗！<br>
+              谨寄千里共明月，随君一路北航。</p>
+          </div>
+          <!-- End of .col-sm-3 -->
+
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li>
+                <h3>产品业务</h3>
+              </li>
+              <li><a href="console/console.html">基本控制</a></li>
+              <li><a href="console/console.html">一键启动</a></li>
+              <li><a href="console/console.html">异常处理</a></li>
+            </ul>
+          </div>
+          <!-- End of .col-sm-3 -->
+
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li>
+                <h3>快速链接</h3>
+              </li>
+              <li><a href="https://github.com/Chen-Qixian" target="_blank">先先的github</a></li>
+              <li><a href="https://www.cnblogs.com/chrischen98/" target="_blank">先先的cnblog</a></li>
+              <li><a href="https://www.baidu.com" target="_blank">百度一下</a></li>
+            </ul>
+          </div>
+          <!-- End of .col-sm-3 -->
+
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li>
+                <h3>联系我们</h3>
+              </li>
+              <li><a href="index.html" target="_blank">麒麟科技官网</a></li>
+              <li><a href="404.html">先先的微博</a></li>
+              <li><a href="404.html">先先的微信</a></li>
+              <li><a href="404.html">先先的QQ</a></li>
+            </ul>
+          </div>
+          <!-- End of .col-sm-3 -->
+
+        </div>
+      </div> <!-- end container -->
+    </div>
+    <!-- 页脚底部 -->
+    <div class="footer-bottom">
+      <h5>Copyright @2019 Powered by Chris Chen.All rights reserved.</h5>
+      <h6>该站由ChrisChen设计与开发，版权归BUAASE103所有！严禁抄袭！勿谓言之不预也。</h6>
+    </div>
+  </footer> <!-- end footer -->
+
+
+  <!-- end Footer Area
+    ========================================== -->
+
+  <!-- 
+    Essential Scripts
+    =====================================-->
+  <!-- 加载必要的脚本文件 -->
+  <!-- Main jQuery -->
+  <script src="plugins/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.1 -->
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Parallax -->
+  <script src="plugins/parallax/jquery.parallax-1.1.3.js"></script>
+  <!-- lightbox -->
+  <script src="plugins/lightbox2/dist/js/lightbox.min.js"></script>
+  <!-- slick Carousel -->
+  <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+  <!-- Portfolio Filtering -->
+  <script src="plugins/mixitup/dist/mixitup.min.js"></script>
+  <!-- Smooth Scroll js -->
+  <script src="plugins/smooth-scroll/dist/js/smooth-scroll.min.js"></script>
+  <!-- 自定义 js -->
+  <!-- <script src="js/main.js"></script> -->
+  <script src="js/script.js"></script>
+
+
+  <!-- 加载额外需要的脚本文件 -->
+  <!-- main jQuery -->
+  <script src="js/vendor/jquery-1.11.1.min.js"></script>
+  <!-- jquery.nav -->
+  <script src="js/jquery.nav.js"></script>
+  <!-- Portfolio Filtering -->
+  <script src="js/jquery.mixitup.min.js"></script>
+  <!-- Fancybox -->
+  <script src="js/jquery.fancybox.pack.js"></script>
+  <!-- jQuery Appear -->
+  <script src="js/jquery.appear.js"></script>
+  <!-- countTo -->
+  <script src="js/jquery-countTo.js"></script>
+  <!-- owl carousel -->
+  <script src="js/owl.carousel.min.js"></script>
+  <!-- WOW script -->
+  <script src="js/wow.min.js"></script>
+
+  <!-- 仅为了加载动画效果 -->
+  <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -13,11 +13,11 @@ import rospy
 
 rospy.init_node('shownstate')
 def get_host_ip(): 
-    s = socket(AF_INET, SOCK_DGRAM)
-    s.connect(('8.8.8.8', 80))
-    ip = s.getsockname()[0]
-    s.close()
-    return ip
+	s = socket(AF_INET, SOCK_DGRAM)
+	s.connect(('8.8.8.8', 80))
+	ip = s.getsockname()[0]
+	s.close()
+	return ip
 
 HOST = get_host_ip()
 print HOST
@@ -25,23 +25,24 @@ print HOST
 PORT=8000
 BUFSIZ=1024
 ADDR = (HOST,PORT) 
-  
+
 tcpSerSock=socket(AF_INET,SOCK_STREAM) 
 tcpSerSock.bind(ADDR) 
 tcpSerSock.listen(5) 
- 
+
 
 MAGIC_STRING = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 HANDSHAKE_STRING = "HTTP/1.1 101 Switching Protocols\r\n" \
-                   "Upgrade:websocket\r\n" \
-                   "Connection: Upgrade\r\n" \
-                   "Sec-WebSocket-Accept: {1}\r\n" \
-                   "WebSocket-Location: ws://{2}/chat\r\n" \
-                   "WebSocket-Protocol:chat\r\n\r\n"
+					"Upgrade:websocket\r\n" \
+					"Connection: Upgrade\r\n" \
+					"Sec-WebSocket-Accept: {1}\r\n" \
+					"WebSocket-Location: ws://{2}/chat\r\n" \
+					"WebSocket-Protocol:chat\r\n\r\n"
 statusBuf = ""
 statusChanged = False
 threadLock = threading.Lock()
-
+toResume = False
+resumeLock = threading.Lock()
 class Th(threading.Thread):
 	def __init__(self, connection, addr):
 		threading.Thread.__init__(self)
@@ -49,12 +50,17 @@ class Th(threading.Thread):
 		self.addr = addr
 
 	def run(self):
-		global statusBuf,threadLock, statusChanged
+		global statusBuf,threadLock, statusChanged, toResume, resumeLock
 		if addr[0] == HOST:
 			while True:
 				thedata = self.con.recv(BUFSIZ)
 				if not thedata:
-					continue;
+					resumeLock.acquire()
+					if toResume:
+						self.con.send("resume")
+						toResume = False
+					resumeLock.release()
+					continue
 				threadLock.acquire()
 				statusChanged = True
 				statusBuf = thedata
@@ -74,9 +80,9 @@ class Th(threading.Thread):
 					continue
 				if (msg == 'start'):
 					print "start shopping"
-					cmd = "roslaunch wpb_home_apps shopping.launch"
+					cmd = "roslaunch team103 team103.launch"
 					proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
-				if (msg == 'topic'):
+				elif (msg == 'topic'):
 					#os.system("rostopic list")
 					cmd = "rostopic list"
 					proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
@@ -87,25 +93,26 @@ class Th(threading.Thread):
 							if line == "":
 								break
 					proc.stdout.close()
-				if (msg == 'stop'):
+				elif (msg == 'stop'):
 					threadLock.acquire()
 					if (statusBuf == "1"):#STATE_FOLLOW
+						print "### ---- stop at follow"
 						cmd = "rosservice call wpb_home_follow/stop 0"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
-					else if (statusBuf == "3"):#STATE_GOTO
+					elif (statusBuf == "3"):#STATE_GOTO
 						cmd = "rostopic pub -1 /move_base/cancel actionlib_msgs/GoalID -- {}"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
 					else :
-						print("error stop time")
+						print "error stop time"
 					threadLock.release()
-				if (msg == 'resume'):
+				elif (msg == 'resume'):
 					threadLock.acquire()
 					if (statusBuf == "1"):#STATE_FOLLOW
 						cmd = "rosservice call wpb_home_follow/resume 0.7"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
 					threadLock.release()
 				else:
-					print "othermsg"
+					print ("!!!!!!!!!!!!!!  othermsg   %s"%(msg))
 		self.con.close()
 
 	def recv_data(self, num):
@@ -133,7 +140,7 @@ class Th(threading.Thread):
 				i += 1
 			return raw_str
 
-    # send data
+# send data
 	def send_data(self, data):
 		if data:
 			data = str(data)
@@ -178,12 +185,12 @@ def handshake(con):
 	con.send(str_handshake)
 	return True
 
- 
+
 if __name__ == '__main__': 
 	#t.start() 
 	print 'waiting for connecting...'
 	while True: 
- 		clientSock,addr = tcpSerSock.accept() 
+		clientSock,addr = tcpSerSock.accept() 
 		print 'connected from:', addr
 		#clientSock.setblocking(0)
 		if addr[0] != HOST:
