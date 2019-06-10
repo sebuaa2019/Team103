@@ -103,7 +103,7 @@ class Th(threading.Thread):
 					if (statusBuf == "1"):#STATE_FOLLOW
 						cmd = "rosservice call wpb_home_follow/resume 0.7"
 						proc = subprocess.Popen(cmd, stderr=subprocess.STDOUT, shell=True, executable="/bin/bash")
-					threadLock.acquire()
+					threadLock.release()
 				else:
 					print "othermsg"
 		self.con.close()
