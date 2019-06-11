@@ -4,5 +4,3 @@
 
 - 2019.5.15 first commit
 - This is a replace version for robot home page.
-- released on 2019.5.28
-- Developed and maintained by Qixian Chen.

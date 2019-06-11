@@ -149,7 +149,7 @@
           </a>
         </li>
         <!-- 控制概览 -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="console.html">
             <span class="menu-title">控制概览</span>
             <i class="mdi mdi-home menu-icon"></i>
@@ -172,8 +172,8 @@
           </div>
         </li>
         <!-- 一键启动 -->
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
+        <li class="nav-item">
+          <a class="nav-link" href="quickStart.html">
             <span class="menu-title">一键启动</span>
             <i class="mdi mdi-contacts menu-icon"></i>
           </a>
@@ -247,20 +247,85 @@
         <div class="page-header">
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-              <i class="mdi mdi-contacts menu-icon"></i>
+              <i class="mdi mdi-home"></i>
             </span>
-            一键启动脚本
+            用户控制面板
           </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                <span></span>详情
+                <span></span>概览
                 <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
               </li>
             </ul>
           </nav>
         </div>
-
+        <!-- 任务数统计 -->
+        <div class="row">
+          <!-- 日任务数统计 -->
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-danger card-img-holder text-white">
+              <div class="card-body">
+                <img src="../images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">本日处理任务
+                  <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">8 项</h2>
+                <h6 class="card-text">同比增长 60%</h6>
+              </div>
+            </div>
+          </div>
+          <!-- 周任务数统计 -->
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-info card-img-holder text-white">
+              <div class="card-body">
+                <img src="../images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">本周处理任务
+                  <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">41 项</h2>
+                <h6 class="card-text">同比降低 10%</h6>
+              </div>
+            </div>
+          </div>
+          <!-- 月任务数统计 -->
+          <div class="col-md-4 stretch-card grid-margin">
+            <div class="card bg-gradient-success card-img-holder text-white">
+              <div class="card-body">
+                <img src="../images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                <h4 class="font-weight-normal mb-3">本月处理任务
+                  <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                </h4>
+                <h2 class="mb-5">213 项</h2>
+                <h6 class="card-text">同比增长 5%</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 任务表格数据 -->
+        <div class="row">
+          <div class="col-md-7 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="clearfix">
+                  <h4 class="card-title float-left">机器人占用时长数据</h4>
+                  <div id="visit-sale-chart-legend"
+                    class="rounded-legend legend-horizontal legend-top-right float-right"></div>
+                </div>
+                <canvas id="visit-sale-chart" class="mt-4"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">机器人任务完成数据</h4>
+                <canvas id="traffic-chart"></canvas>
+                <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- 用户任务列表 -->
         <div class="row">
           <div class="col-12 grid-margin">
